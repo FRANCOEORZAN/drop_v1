@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 
-{% block title %}Aura Store | {{ product.name }}{% endblock %}
+{% block title %}AuraPets | {{ product.name }}{% endblock %}
 
 {% block content %}
 <div class="product-detail-container">
@@ -9,24 +9,38 @@
     </div>
 
     <div class="product-detail-info">
+        <span class="detail-category">🐾 Premium Quality</span>
         <h1 class="detail-title">{{ product.name }}</h1>
+
+        <div class="detail-stars">
+            <span class="detail-stars-icons">★★★★★</span>
+            <span>4.9 · 128 reviews</span>
+        </div>
+
         <p class="detail-price">${{ "%.2f"|format(product.price) }}</p>
 
         <div class="detail-divider"></div>
 
         <p class="detail-description">{{ product.description }}</p>
 
-        <button class="btn-primary btn-large checkout-btn">Add to Cart</button>
+        <button class="btn-primary btn-large checkout-btn">Add to Cart 🛒</button>
 
         <div class="perks">
             <div class="perk">
-                <span class="perk-icon">✓</span> Free Worldwide Shipping
+                <span class="perk-icon">✓</span>
+                Free Worldwide Shipping on orders over $75
             </div>
             <div class="perk">
-                <span class="perk-icon">✓</span> 30-Day Money-Back Guarantee
+                <span class="perk-icon">✓</span>
+                30-Day Money-Back Guarantee
             </div>
             <div class="perk">
-                <span class="perk-icon">✓</span> Secure Checkout
+                <span class="perk-icon">✓</span>
+                Secure &amp; Encrypted Checkout
+            </div>
+            <div class="perk">
+                <span class="perk-icon">✓</span>
+                2-Year Quality Guarantee
             </div>
         </div>
     </div>

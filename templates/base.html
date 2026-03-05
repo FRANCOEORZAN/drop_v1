@@ -4,21 +4,48 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{% block title %}Aura Store{% endblock %}</title>
+    <title>{% block title %}AuraPets | Premium Pet Essentials{% endblock %}</title>
+    <meta name="description"
+        content="Curated premium essentials for the modern pet owner. Quality you can trust, style they'll love.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap"
+    <link
+        href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&family=Playfair+Display:wght@600;700&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 </head>
 
 <body>
-    <nav class="navbar">
+
+    <!-- Announcement Bar -->
+    <div class="announcement-bar">
+        ✦ FREE PREMIUM SHIPPING ON ALL ORDERS OVER $75 <span>·</span> USE CODE <strong>AURA10</strong> FOR 10% OFF
+        <span>·</span> ✦
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
         <div class="nav-content">
-            <a href="/" class="logo">AURA</a>
-            <div class="nav-links">
-                <a href="/">Shop</a>
-                <a href="#" class="cart-btn">Cart (0)</a>
+            <a href="/" class="logo">
+                <span class="logo-icon">🐾</span>
+                AURAPETS
+            </a>
+
+            <!-- Mobile Toggle -->
+            <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+
+            <div class="nav-links" id="navLinks">
+                <a href="/">Shop All</a>
+                <a href="#">New Arrivals</a>
+                <a href="#">About Us</a>
+                <a href="#" class="cart-btn">
+                    <span>🛒</span>
+                    Cart (0)
+                </a>
             </div>
         </div>
     </nav>
@@ -27,9 +54,96 @@
         {% block content %}{% endblock %}
     </main>
 
+    <!-- Footer -->
     <footer class="footer">
-        <p>&copy; 2026 Aura Store. Beautiful Products.</p>
+        <div class="footer-content">
+
+            <!-- Brand Column -->
+            <div class="footer-section footer-brand">
+                <div class="footer-logo">
+                    <span>🐾</span>
+                    AURAPETS
+                </div>
+                <p>Providing premium, curated essentials for the modern pet life. Because your best friend deserves
+                    nothing but the best.</p>
+                <div class="footer-social">
+                    <button class="social-btn" aria-label="Instagram">IG</button>
+                    <button class="social-btn" aria-label="TikTok">TT</button>
+                    <button class="social-btn" aria-label="Facebook">FB</button>
+                    <button class="social-btn" aria-label="Pinterest">PT</button>
+                </div>
+            </div>
+
+            <!-- Shop Links -->
+            <div class="footer-section">
+                <h4>Shop</h4>
+                <ul class="footer-links">
+                    <li><a href="/">All Products</a></li>
+                    <li><a href="#">Dog Essentials</a></li>
+                    <li><a href="#">Cat Collection</a></li>
+                    <li><a href="#">New Arrivals</a></li>
+                    <li><a href="#">Best Sellers</a></li>
+                </ul>
+            </div>
+
+            <!-- Support Links -->
+            <div class="footer-section">
+                <h4>Support</h4>
+                <ul class="footer-links">
+                    <li><a href="#">Shipping Policy</a></li>
+                    <li><a href="#">Returns &amp; Exchanges</a></li>
+                    <li><a href="#">FAQs</a></li>
+                    <li><a href="#">Contact Us</a></li>
+                    <li><a href="#">Track My Order</a></li>
+                </ul>
+            </div>
+
+            <!-- Newsletter -->
+            <div class="footer-section">
+                <h4>Join the Club</h4>
+                <p class="newsletter-label">Get 10% off your first order + weekly pet care tips delivered to your inbox.
+                </p>
+                <form class="newsletter-form">
+                    <input type="email" placeholder="Your email address">
+                    <button type="submit">Subscribe →</button>
+                </form>
+            </div>
+
+        </div>
+
+        <!-- Footer Bottom Bar -->
+        <div class="footer-bottom">
+            <p>&copy; 2026 AuraPets Boutique. All rights reserved.</p>
+            <div class="trust-badges">
+                <span class="trust-badge-item">🔒 Secure Checkout</span>
+                <span class="trust-badge-item">💳 Visa</span>
+                <span class="trust-badge-item">💳 Mastercard</span>
+                <span class="trust-badge-item">💳 Amex</span>
+                <span class="trust-badge-item">🍎 Apple Pay</span>
+            </div>
+        </div>
     </footer>
+
+    <script>
+        // Navbar scroll effect
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            navbar.classList.toggle('scrolled', window.scrollY > 20);
+        });
+
+        // Mobile nav toggle
+        const navToggle = document.getElementById('navToggle');
+        const navLinks = document.getElementById('navLinks');
+        navToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('open');
+        });
+
+        // Close mobile nav when link clicked
+        navLinks.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => navLinks.classList.remove('open'));
+        });
+    </script>
+
 </body>
 
 </html>

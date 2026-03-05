@@ -1,29 +1,148 @@
 {% extends "base.html" %}
 
-{% block title %}Aura Store | Premium Essentials{% endblock %}
+{% block title %}AuraPets | Premium Pet Boutique{% endblock %}
 
 {% block content %}
+
+<!-- Hero -->
 <section class="hero">
     <div class="hero-text">
-        <h1>Elevate Your Everyday</h1>
-        <p>Discover our curated collection of premium essentials designed to inspire.</p>
+        <span class="hero-eyebrow">🐾 Curated for Modern Pet Parents</span>
+        <h1>Elevate Your<br><em>Pet's Life</em></h1>
+        <p>Premium, handpicked essentials for the discerning pet owner. Quality you can trust, style they'll adore.</p>
+        <div class="hero-cta">
+            <a href="#products" class="btn-primary">Shop Collection ↓</a>
+            <a href="#" class="btn-ghost">Our Story</a>
+        </div>
     </div>
 </section>
 
-<section class="products-grid">
-    {% for product in products %}
-    <div class="product-card">
-        <div class="product-image-wrapper">
-            <img src="{{ product.image_url }}" alt="{{ product.name }}" class="product-image">
-            <div class="product-overlay">
-                <a href="/product/{{ product.id }}" class="btn-primary">View Details</a>
+<!-- Featured In -->
+<div class="trust-banner">
+    <p class="trust-banner-inner">As Seen In</p>
+    <div class="trust-logos">
+        <span class="trust-logo">PetStyle Weekly</span>
+        <span class="trust-logo">Modern Dog</span>
+        <span class="trust-logo">The Cat Nip</span>
+        <span class="trust-logo">Aura Living</span>
+        <span class="trust-logo">PawLife Mag</span>
+    </div>
+</div>
+
+<!-- Products -->
+<section id="products" class="products-section">
+    <div class="section-header">
+        <span class="section-eyebrow">🛍 Our Collection</span>
+        <h2 class="section-title">Essential Picks</h2>
+        <p class="section-subtitle">Thoughtfully designed products your pet will love — and you'll feel great about.</p>
+    </div>
+    <div class="products-grid">
+        {% for product in products %}
+        <div class="product-card">
+            <div class="product-image-wrapper">
+                <span class="product-badge">New</span>
+                <img src="{{ product.image_url }}" alt="{{ product.name }}" class="product-image">
+                <div class="product-overlay">
+                    <a href="/product/{{ product.id }}" class="btn-primary">View Product →</a>
+                </div>
+            </div>
+            <div class="product-info">
+                <div class="product-meta">
+                    <span class="product-tag">Premium Quality</span>
+                    <h3 class="product-title">{{ product.name }}</h3>
+                </div>
+                <div class="product-price-wrap">
+                    <p class="product-price">${{ "%.2f"|format(product.price) }}</p>
+                </div>
             </div>
         </div>
-        <div class="product-info">
-            <h3 class="product-title">{{ product.name }}</h3>
-            <p class="product-price">${{ "%.2f"|format(product.price) }}</p>
+        {% endfor %}
+    </div>
+</section>
+
+<!-- Benefits -->
+<section class="benefits-section">
+    <div class="section-header">
+        <span class="section-eyebrow">✦ Why AuraPets</span>
+        <h2 class="section-title">Built Around Your Pet</h2>
+    </div>
+    <div class="benefits">
+        <div class="benefit-card">
+            <div class="benefit-icon-wrap">
+                <span class="benefit-icon">🚚</span>
+            </div>
+            <h3>Priority Shipping</h3>
+            <p>Fast, reliable delivery to your doorstep. Free on all orders over $75.</p>
+        </div>
+        <div class="benefit-card">
+            <div class="benefit-icon-wrap">
+                <span class="benefit-icon">🛡️</span>
+            </div>
+            <h3>2-Year Guarantee</h3>
+            <p>We stand fully behind our quality. If it breaks, we replace it — no questions.</p>
+        </div>
+        <div class="benefit-card">
+            <div class="benefit-icon-wrap">
+                <span class="benefit-icon">💳</span>
+            </div>
+            <h3>Secure Payments</h3>
+            <p>256-bit encrypted checkout. Your data is always safe with us.</p>
+        </div>
+        <div class="benefit-card">
+            <div class="benefit-icon-wrap">
+                <span class="benefit-icon">🔄</span>
+            </div>
+            <h3>Easy Returns</h3>
+            <p>Not happy? Return within 30 days, hassle-free. No awkward questions.</p>
         </div>
     </div>
-    {% endfor %}
 </section>
+
+<!-- Testimonials -->
+<section class="testimonials-section">
+    <div class="section-header">
+        <span class="section-eyebrow">💬 Reviews</span>
+        <h2 class="section-title">What Pet Parents Say</h2>
+        <p class="section-subtitle">Trusted by thousands of happy pet owners worldwide.</p>
+    </div>
+    <div class="testimonials-grid">
+        <div class="testimonial-card">
+            <div class="stars">★★★★★</div>
+            <p class="testimonial-text">"The quality of the harness I bought is unmatched. You can really feel the
+                premium materials — Cooper loves it on walks."</p>
+            <div class="testimonial-author-row">
+                <div class="author-avatar">SJ</div>
+                <div>
+                    <p class="testimonial-author">Sarah J.</p>
+                    <p class="testimonial-pet">Owner of Cooper 🐕</p>
+                </div>
+            </div>
+        </div>
+        <div class="testimonial-card">
+            <div class="stars">★★★★★</div>
+            <p class="testimonial-text">"Fast shipping and the packaging was absolutely beautiful. AuraPets is my new
+                go-to for Luna's essentials."</p>
+            <div class="testimonial-author-row">
+                <div class="author-avatar">MT</div>
+                <div>
+                    <p class="testimonial-author">Michael T.</p>
+                    <p class="testimonial-pet">Owner of Luna 🐈</p>
+                </div>
+            </div>
+        </div>
+        <div class="testimonial-card">
+            <div class="stars">★★★★★</div>
+            <p class="testimonial-text">"Customer service was incredibly helpful when I needed to exchange sizes. Truly
+                a professional boutique — will shop again!"</p>
+            <div class="testimonial-author-row">
+                <div class="author-avatar">ER</div>
+                <div>
+                    <p class="testimonial-author">Emily R.</p>
+                    <p class="testimonial-pet">Owner of Bella 🐩</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
 {% endblock %}
