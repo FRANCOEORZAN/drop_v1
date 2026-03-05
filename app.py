@@ -1,12 +1,21 @@
+import os
 from flask import Flask, render_template
 
 from models import db, Product
 
 app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///dropshipping.db'
+basedir = os.path.abspath(os.path.dirname(__file__))
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///' + os.path.join(basedir, 'instance', 'dropshipping.db')
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 db.init_app(app)
+
+# Ensure the instance folder exists for the SQLite database
+os.makedirs(os.path.join(basedir, 'instance'), exist_ok=True)
+
+@app.route('/health')
+def health():
+    return {"status": "healthy"}, 200
 
 # Auto-initialize and seed database
 with app.app_context():
@@ -45,7 +54,7 @@ def product_detail(product_id):
     product = Product.query.get_or_404(product_id)
     return render_template('product.html', product=product)
 
-import os
+
 if __name__ == '__main__':
     port = int(os.environ.get('PORT', 5050))
     app.run(host='0.0.0.0', port=port, debug=True)
