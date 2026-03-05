@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+
+{% block title %}Aura Store | {{ product.name }}{% endblock %}
+
+{% block content %}
+<div class="product-detail-container">
+    <div class="product-detail-image-box">
+        <img src="{{ product.image_url }}" alt="{{ product.name }}" class="product-detail-image">
+    </div>
+
+    <div class="product-detail-info">
+        <h1 class="detail-title">{{ product.name }}</h1>
+        <p class="detail-price">${{ "%.2f"|format(product.price) }}</p>
+
+        <div class="detail-divider"></div>
+
+        <p class="detail-description">{{ product.description }}</p>
+
+        <button class="btn-primary btn-large checkout-btn">Add to Cart</button>
+
+        <div class="perks">
+            <div class="perk">
+                <span class="perk-icon">✓</span> Free Worldwide Shipping
+            </div>
+            <div class="perk">
+                <span class="perk-icon">✓</span> 30-Day Money-Back Guarantee
+            </div>
+            <div class="perk">
+                <span class="perk-icon">✓</span> Secure Checkout
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
