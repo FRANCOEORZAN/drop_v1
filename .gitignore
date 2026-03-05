@@ -4,3 +4,4 @@ __pycache__/
 .env
 instance/
 .pytest_cache/
+run_server.sh
