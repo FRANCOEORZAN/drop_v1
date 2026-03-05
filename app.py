@@ -8,6 +8,33 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 db.init_app(app)
 
+# Auto-initialize and seed database
+with app.app_context():
+    db.create_all()
+    if Product.query.count() == 0:
+        sample_products = [
+            Product(
+                name="Midnight Chronograph",
+                description="A sleek, minimalist timepiece featuring a matte black dial and a premium leather strap. Perfect for both formal and casual settings.",
+                price=149.99,
+                image_url="https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&q=80&w=800"
+            ),
+            Product(
+                name="Aura Wireless Earbuds",
+                description="High-fidelity sound meets striking aesthetic. Active noise cancellation and an ergonomic design for all-day comfort.",
+                price=89.50,
+                image_url="https://images.unsplash.com/photo-1590658268037-6bf12165a8df?auto=format&fit=crop&q=80&w=800"
+            ),
+            Product(
+                name="Obsidian Desk Mat",
+                description="Elevate your workspace with this premium faux-leather desk pad. Offers a smooth gliding surface and protects your desk in style.",
+                price=34.00,
+                image_url="https://images.unsplash.com/photo-1527443154391-507e9dc6c5cc?auto=format&fit=crop&q=80&w=800"
+            )
+        ]
+        db.session.add_all(sample_products)
+        db.session.commit()
+
 @app.route('/')
 def index():
     products = Product.query.all()
