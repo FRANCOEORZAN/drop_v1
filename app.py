@@ -23,22 +23,22 @@ with app.app_context():
     if Product.query.count() == 0:
         sample_products = [
             Product(
-                name="Midnight Chronograph",
-                description="A sleek, minimalist timepiece featuring a matte black dial and a premium leather strap. Perfect for both formal and casual settings.",
-                price=149.99,
-                image_url="https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&q=80&w=800"
+                name="PawGuard No-Pull Dog Harness",
+                description="The ultimate safety and comfort for your furry friend. Features reflective straps, breathable mesh, and a secure no-pull design for effortless walks.",
+                price=29.99,
+                image_url="https://images.unsplash.com/photo-1535930891776-0c2dfb7fda1a?auto=format&fit=crop&q=80&w=800"
             ),
             Product(
-                name="Aura Wireless Earbuds",
-                description="High-fidelity sound meets striking aesthetic. Active noise cancellation and an ergonomic design for all-day comfort.",
-                price=89.50,
-                image_url="https://images.unsplash.com/photo-1590658268037-6bf12165a8df?auto=format&fit=crop&q=80&w=800"
+                name="VitaSmooth Portable Blender",
+                description="Power through your day with fresh smoothies anywhere. USB rechargeable, high-torque motor, and sleek design for the modern wellness enthusiast.",
+                price=45.50,
+                image_url="https://images.unsplash.com/photo-1570222094114-d054a817e56b?auto=format&fit=crop&q=80&w=800"
             ),
             Product(
-                name="Obsidian Desk Mat",
-                description="Elevate your workspace with this premium faux-leather desk pad. Offers a smooth gliding surface and protects your desk in style.",
-                price=34.00,
-                image_url="https://images.unsplash.com/photo-1527443154391-507e9dc6c5cc?auto=format&fit=crop&q=80&w=800"
+                name="GlowFlow LED Cloud Ceiling Lamp",
+                description="Transform your space with atmospheric lighting. Smart app control, millions of colors, and a unique floating aesthetic for a futuristic home vibe.",
+                price=119.00,
+                image_url="https://images.unsplash.com/photo-1540932239986-30128078f3c5?auto=format&fit=crop&q=80&w=800"
             )
         ]
         db.session.add_all(sample_products)
